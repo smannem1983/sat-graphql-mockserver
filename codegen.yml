@@ -1,0 +1,18 @@
+overwrite: true
+schema: './src/schema.graphql'
+generates:
+  src/generated-types.ts:
+    plugins:
+      - 'typescript'
+  src/mocks/generated-mocks.ts:
+    plugins:
+      - add:
+          content: '/* eslint-disable @typescript-eslint/no-use-before-define,@typescript-eslint/no-unused-vars,no-prototype-builtins */'
+      - typescript-mock-data:
+          typesFile: '../generated-types.ts'
+          enumValues: upper-case#upperCase
+          listElementCount: 3
+          typeNames: keep
+          dynamicValues: true
+          scalars:
+            DateTime: date # gets translated to casual.date()

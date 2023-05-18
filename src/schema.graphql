@@ -1,0 +1,22 @@
+  scalar DateTime
+  
+  type TourData {    
+    listingID: ID!
+    availableDates: [TourAvailabilityDate]
+  }
+
+  type TourAvailabilityDate {
+    id: ID!
+    tourDate: DateTime!
+    tourAvailabilityTimes: [TourAvailabilityTime]
+  }
+
+  type TourAvailabilityTime {
+    id: ID!
+    startTime: DateTime!
+    endTime: DateTime!    
+  }
+
+  type Query {
+    availableDates(listingID: ID!, month: String): TourData
+  }
