@@ -24,9 +24,10 @@ corepack enable
 
 corepack prepare pnpm@latest --activate
 ```
-- Install pnpm dependencies & start
+- Install pnpm dependencies & start. Should be running on http://localhost:4000/graphql
 
 ```shell
 pnpm install
 pnpm start
 ```
+![image](https://github.com/smannem1983/sat-graphql-mockserver/assets/117308845/58c15641-5a47-46a9-90f9-445ba10f1a19)
