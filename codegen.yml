@@ -11,8 +11,26 @@ generates:
       - typescript-mock-data:
           typesFile: '../generated-types.ts'
           enumValues: upper-case#upperCase
+          generateLibrary: 'faker'
           listElementCount: 3
           typeNames: keep
           dynamicValues: true
-          scalars:
-            DateTime: date # gets translated to casual.date()
+          fieldGeneration:
+            TourAvailabilityDate:
+              tourDate:
+                generator: date.soon
+                arguments:
+                  days: 3
+            TourAvailabilityTime:
+              startTime: 
+                generator: date.soon
+                arguments:
+                  days: 1
+                extra:
+                  function: toISOString
+              endTime: 
+                generator: date.soon
+                arguments:
+                  days: 1
+                extra:
+                  function: toISOString

@@ -27,6 +27,7 @@
     "typescript": "5.0.4"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.0.1",
     "graphql": "^16.6.0",
     "graphql-scalars": "^1.21.3",
     "graphql-tag": "^2.12.6",
