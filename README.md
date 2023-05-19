@@ -28,6 +28,7 @@ corepack prepare pnpm@latest --activate
 
 ```shell
 pnpm install
+pnpm codegen
 pnpm start
 ```
 ![image](https://github.com/smannem1983/sat-graphql-mockserver/assets/117308845/58c15641-5a47-46a9-90f9-445ba10f1a19)
