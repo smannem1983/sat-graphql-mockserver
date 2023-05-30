@@ -3,12 +3,13 @@
   type TourData {    
     listingID: ID!
     availableDates: [TourAvailabilityDate]
+    areAvailableTimesIncluded: Boolean
   }
 
   type TourAvailabilityDate {
     id: ID!
     tourDate: DateTime!
-    tourAvailabilityTimes: [TourAvailabilityTime]
+    availabileTimes: [TourAvailabilityTime]
   }
 
   type TourAvailabilityTime {
@@ -18,5 +19,6 @@
   }
 
   type Query {
-    availableDates(listingID: ID!, month: String): TourData
+    getAvailableDates(listingID: ID!, month: String): TourData
+    getAvailableTimes(listingID: ID!, date: String): TourAvailabilityDate
   }

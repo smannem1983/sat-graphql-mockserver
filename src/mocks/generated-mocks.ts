@@ -6,14 +6,15 @@ faker.seed(0);
 
 export const aQuery = (overrides?: Partial<Query>): Query => {
     return {
-        availableDates: overrides && overrides.hasOwnProperty('availableDates') ? overrides.availableDates! : aTourData(),
+        getAvailableDates: overrides && overrides.hasOwnProperty('getAvailableDates') ? overrides.getAvailableDates! : aTourData(),
+        getAvailableTimes: overrides && overrides.hasOwnProperty('getAvailableTimes') ? overrides.getAvailableTimes! : aTourAvailabilityDate(),
     };
 };
 
 export const aTourAvailabilityDate = (overrides?: Partial<TourAvailabilityDate>): TourAvailabilityDate => {
     return {
+        availabileTimes: overrides && overrides.hasOwnProperty('availabileTimes') ? overrides.availabileTimes! : [aTourAvailabilityTime(), aTourAvailabilityTime(), aTourAvailabilityTime()],
         id: overrides && overrides.hasOwnProperty('id') ? overrides.id! : faker.datatype.uuid(),
-        tourAvailabilityTimes: overrides && overrides.hasOwnProperty('tourAvailabilityTimes') ? overrides.tourAvailabilityTimes! : [aTourAvailabilityTime(), aTourAvailabilityTime(), aTourAvailabilityTime()],
         tourDate: overrides && overrides.hasOwnProperty('tourDate') ? overrides.tourDate! : faker['date']['soon'](...[{"days":3}]),
     };
 };
@@ -28,6 +29,7 @@ export const aTourAvailabilityTime = (overrides?: Partial<TourAvailabilityTime>)
 
 export const aTourData = (overrides?: Partial<TourData>): TourData => {
     return {
+        areAvailableTimesIncluded: overrides && overrides.hasOwnProperty('areAvailableTimesIncluded') ? overrides.areAvailableTimesIncluded! : true || faker.datatype.boolean(),
         availableDates: overrides && overrides.hasOwnProperty('availableDates') ? overrides.availableDates! : [aTourAvailabilityDate(), aTourAvailabilityDate(), aTourAvailabilityDate()],
         listingID: overrides && overrides.hasOwnProperty('listingID') ? overrides.listingID! : faker.datatype.uuid(),
     };

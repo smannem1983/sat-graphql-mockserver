@@ -15,19 +15,26 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  availableDates?: Maybe<TourData>;
+  getAvailableDates?: Maybe<TourData>;
+  getAvailableTimes?: Maybe<TourAvailabilityDate>;
 };
 
 
-export type QueryAvailableDatesArgs = {
+export type QueryGetAvailableDatesArgs = {
   listingID: Scalars['ID'];
   month?: InputMaybe<Scalars['String']>;
 };
 
+
+export type QueryGetAvailableTimesArgs = {
+  date?: InputMaybe<Scalars['String']>;
+  listingID: Scalars['ID'];
+};
+
 export type TourAvailabilityDate = {
   __typename?: 'TourAvailabilityDate';
+  availabileTimes?: Maybe<Array<Maybe<TourAvailabilityTime>>>;
   id: Scalars['ID'];
-  tourAvailabilityTimes?: Maybe<Array<Maybe<TourAvailabilityTime>>>;
   tourDate: Scalars['DateTime'];
 };
 
@@ -40,6 +47,7 @@ export type TourAvailabilityTime = {
 
 export type TourData = {
   __typename?: 'TourData';
+  areAvailableTimesIncluded?: Maybe<Scalars['Boolean']>;
   availableDates?: Maybe<Array<Maybe<TourAvailabilityDate>>>;
   listingID: Scalars['ID'];
 };

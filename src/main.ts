@@ -4,7 +4,7 @@ import { createServer } from 'http';
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { DateTimeTypeDefinition } from "graphql-scalars";
 import { readFileSync } from 'fs';
-import { aTourData } from './mocks/generated-mocks';
+import { aTourAvailabilityDate, aTourData } from './mocks/generated-mocks';
  
 function main() {
     const typeDefs = gql(
@@ -14,7 +14,8 @@ function main() {
       );
     const resolvers = {
         Query: {
-            availableDates: () => aTourData()
+            getAvailableDates: () => aTourData(),
+            getAvailableTimes: () => aTourAvailabilityDate()
         }
       }
     const schema = makeExecutableSchema({
